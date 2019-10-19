@@ -1,0 +1,166 @@
+<html>
+  <head>
+    <title>
+      Tasks - To Do
+    </title>
+    <link href="css/ToDo.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/MsExternal.css" />
+  </head>
+  <body>
+    <header>
+      <div class="menu-icon" >
+        <button class ="all-apps-icon"><img src="images/circled-menu.png"></button>
+      </div>
+      <a class="todo-link">
+      <span class="to-do">
+      To Do
+      </span>
+      </a>
+      <div class="header-search">
+        <div class="header-search-box" id="header-search-box" onclick="activateSearchBox()">
+          <button class="search-btn" id="search-btn">
+          <i class="ms-Icon ms-Icon--Search iconSize-24 search-color"></i>
+          </button>
+          <input type="search" id="search-input-box" class="header-search-input-box" placeholder="Search" />
+        </div>
+      </div>
+      <div class="header-right-side">
+        <div class="header-right-side-options" >
+          <div class="name-icon" >PK</div>
+        </div>
+        <div class="header-right-side-options" id="name-icon">
+          <i class="ms-Icon ms-Icon--Megaphone iconSize-24 option-icon"></i>
+        </div>
+        <div class="header-right-side-options">
+          <img class="option-icon" src="images/Help.svg" />
+        </div>
+        <div class="header-right-side-options" id="name-icon">
+          <i class="ms-Icon ms-Icon--Settings iconSize-24 option-icon"></i>
+        </div>
+      </div>
+    </header>
+    <div class="nav-bar">
+      <nav class="nav" id="nav">
+        <div>
+          <div class="ham-burger" id="nav-header" onclick="toggle('nav')">
+            <i class="ms-Icon ms-Icon--GlobalNavButton iconSize-24 "></i>
+          </div>
+          <div class="icon">
+            <div class="iconContent">
+              <i class="ms-Icon ms-Icon--Sunny iconSize-24 list-icon"></i>
+              <span>My Day</span>
+            </div>
+            <div class="iconContent">
+              <i class="ms-Icon ms-Icon--FavoriteStar iconSize-24 list-icon"></i>
+              <span>Important</span>
+            </div>
+            <div class="iconContent">
+              <i class="ms-Icon ms-Icon--Calendar iconSize-24 list-icon"></i>
+              <span>Planned</span>
+            </div>
+            <div class="iconContent">
+              <i class="ms-Icon ms-Icon--Contact iconSize-24 list-icon contact"></i>
+              <span>Assigned to Me</span>
+            </div>
+            <div class="iconContent">
+              <i class="ms-Icon ms-Icon--Home iconSize-24 list-icon home"></i>
+              <span>Tasks</span>
+            </div>
+          </div>
+          <div class="tasks" id="taskList">
+          </div>
+          <div class="tasklist">
+            <i class="icon fontIcon ms-Icon ms-Icon--Add iconSize-24 iconSize-24-li" onclick="openTab('nav')"></i>
+            <input class="taskInput" type="text" id="taskName" placeholder="New list">
+          </div>
+        </div>
+      </nav>
+      <div class="task-content task-content-full" id="task-content">
+        <div class="task-header">
+          <span id="task">Tasks</span>
+          <span><input type="text" id="task-name" class="task-name" /></span>
+          <p id="taskId"></p>
+          <span id="task-header-option">...</span>
+          <span class="share-icon">
+          <i class="ms-Icon ms-Icon--AddFriend iconSize-24"></i>
+          <span>Share</span>
+          </span>
+          <span class="sort-icon">
+          <i class="ms-Icon ms-Icon--Sort iconSize-24"></i>
+          <span>Sort</span>
+          </span>
+        </div>
+        <div id="new-task-container">
+        </div>
+        <div class="subTasks" id="subTasks">
+        </div>
+        <div class="add-new-task" id="add-new-task">
+          <button class="add-task-btn">
+          <i class="ms-Icon ms-Icon--Add iconSize-24"></i>
+          </button>
+          <input type="text" placeholder="Add task" id="subTask" class="add-task-input-box"/>
+        </div>
+        <div class="task-list"></div>
+      </div>
+      <div class= "whole-body disp-none" id="whole-body" >
+        <div class="delete-block disp-none" id="delete-block">
+          <p>You won't be able to undo this action</p>
+          <button class="cancel-delete" onclick="cancelDelete()" >Cancel</button>
+          <button class="confirm-delete" onclick="deleteSubTask()" >Delete task</button>
+        </div>
+      </div>
+      <div id="step-content" class="step-content step-content-close">
+        <div class="step-content-values">
+          <div class="steps-input">
+            <div class="fav-subtask">
+              <img src="images/circle-checked.svg" id="subtask-id-steps" onclick="changeSubtaskStatus()"/>
+              <input type="text" class="step-input-box" id="sub-task-name"/>
+              <p id="sub-task-id" class="disp-none"></p>
+              <i class="ms-Icon ms-Icon--FavoriteStar iconSize-24" aria-hidden="true"></i>
+            </div>
+            <div class="steps-list" id="steps">
+            </div>
+            <div class="add-new-step" id="add-new-task">
+              <button class="add-task-btn">
+              <i class="ms-Icon ms-Icon--Add iconSize-24"></i>
+              </button>
+              <input type="text" placeholder="Add step" id="add-steps" class="add-task-input-box"/>
+            </div>
+          </div>
+          <div class="add-my-day">
+            <i class="ms-Icon ms-Icon--Sunny iconSize-24 list-icon"></i>
+            <span>My Day</span>
+          </div>
+          <div class="step-content-remind">
+            <div class="remind-content">
+                <i class="ms-Icon ms-Icon--AlarmClock iconSize-24" ></i>
+              <span>Remind Me</span>
+            </div>
+            <div class="remind-content">
+                <i class="ms-Icon ms-Icon--Calendar iconSize-24" ></i>
+              <span>Add due date</span>
+            </div>
+            <div class="remind-content">
+                <i class="ms-Icon ms-Icon--RecurringEvent iconSize-24" ></i>
+              <span>Repeat</span>
+            </div>
+          </div>
+          <div class="add-my-day">
+              <i class="ms-Icon ms-Icon--Attach iconSize-24" ></i>
+            <span>Add file</span>
+          </div>
+        </div>
+        <div class="step-content-option">
+          <button onclick="closeStep()" class="close-step step-option" >
+            <i class="ms-Icon ms-Icon--ClosePane iconSize-24"></i>
+          </button>
+          <button onclick="confirmDelete()" class="delete-subtask step-option" >
+              <i class="ms-Icon ms-Icon--Delete iconSize-24" ></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="js/ToDo.js"></script>
+  </body>
+</html>
